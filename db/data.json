@@ -1,0 +1,57 @@
+{
+    "users": [
+        {
+            "email": "neo@matrix.com",
+            "name": "Neo",
+            "password": "1234"
+        },
+        {
+            "email": "trinity@matrix.com",
+            "name": "Trinity",
+            "password": "1234"
+        },
+        {
+            "email": "morfeo@matrix.com",
+            "name": "Morfeo",
+            "password": "1234"
+        }
+    ],
+    "ads": [
+        {
+            "name": "bike",
+            "sale": true,
+            "price": 230.15,
+            "photo": "images/ads/bike.jpg",
+            "tags": [
+                "lifestyle",
+                "motor"
+            ]
+        },
+        {
+            "name": "iPhone",
+            "sale": false,
+            "price": 50.0,
+            "photo": "images/ads/iphone.png",
+            "tags": [
+                "lifestyle",
+                "mobile"
+            ]
+        },
+        {
+            "name": "nokia",
+            "sale": true,
+            "price": 100.0,
+            "photo": "images/ads/nokia.jpg",
+            "tags": [
+                "lifestyle",
+                "mobile"
+            ]
+        }
+    ],
+    "tags": [
+        "work",
+        "lifestyle",
+        "motor",
+        "mobile"
+    ]
+}
