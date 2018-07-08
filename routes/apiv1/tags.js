@@ -12,8 +12,6 @@ const Tag = require('../../models/Tag');
 
 router.get('/', async (req, res, next) => {
     try {
-        console.log('Retrieved tags:', req.body);
-
         const tags = await Tag.find();
         res.json({ success: true, result: tags });
     } catch (err) {

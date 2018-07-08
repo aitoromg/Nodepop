@@ -14,7 +14,7 @@ var adSchema = mongoose.Schema({
 adSchema.index({ name: 1, sale: 1, price: 1, tags: 1 });
 
 // static method
-adSchema.statics.list = function(filter, skip, limit, fields, sort) {
+adSchema.statics.list = function(filter, skip, limit, fields, sort, tags) {
 
     // create query without execute
     const query = Ad.find(filter);
@@ -30,8 +30,16 @@ adSchema.statics.list = function(filter, skip, limit, fields, sort) {
     query.sort(sort);
 
     // execute query and return the promise
-    return query.exec();
+    return query.exec(tags);
 }
+
+// filter by tag
+adSchema.statics.tagsList = (tags) => {
+    const query = Ad.distinct('tags');
+
+    // execute query
+    query.exec(tags);
+};
 
 // create model
 const Ad = mongoose.model('Ad', adSchema);

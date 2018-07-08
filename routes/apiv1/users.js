@@ -9,7 +9,7 @@ const jwt = require('jsonwebtoken');
 
 const crypto = require('crypto');
 
-const localConfig = require('../../localConfig.js');
+const localConfig = require('../../localConfig');
 
 /**
  * POST / 
@@ -28,6 +28,7 @@ router.post('/register', (req, res, next) => {
 
     User.create(signUpData, (err, user) => {
         if (err) {
+            console.log(err);
             next(err);
             return;
         }
@@ -45,25 +46,22 @@ router.post('/register', (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
     try {
-
-        const hash = crypto.createHash('sha256').update(req.body.password).digest('base64');
-
         // collect credentials
         const email = req.body.email;
-        const password = hash;
+        const password = req.body.password;
 
         // search user
         const user = await User.findOne({ email: email }).exec();
 
         // check user
         if (!user) {
-            res.json({ success: true, message: 'Invalid user' });
+            res.json({ success: true, code: 401, message: res.__('Invalid_credentials') });
             return;
         }
 
         // verify password
         if (password !== user.password) {
-            res.json({ success: true, message: 'Invalid password' });
+            res.json({ success: true, code: 401, message: res.__('Invalid_credentials') });
             return;
         }
 
@@ -79,7 +77,7 @@ router.post('/login', async (req, res, next) => {
             res.json({ success: true, token });
         });
         
-    } catch (error) {
+    } catch (err) {
         next(err);
     }
 });

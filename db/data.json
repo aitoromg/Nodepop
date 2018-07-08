@@ -3,17 +3,17 @@
         {
             "email": "neo@matrix.com",
             "name": "Neo",
-            "password": "1234"
+            "password": "6MRdj?=L<kAQY;u_Bb8*H]mS{x{ktp5g"
         },
         {
             "email": "trinity@matrix.com",
             "name": "Trinity",
-            "password": "1234"
+            "password": "2(EuUn7U?D<2?&j+_m&@Za3P<=Rb)SZ5"
         },
         {
             "email": "morfeo@matrix.com",
             "name": "Morfeo",
-            "password": "1234"
+            "password": "];u2923E^kK)Srz.p242X6Xx5fpL9+aR"
         }
     ],
     "ads": [
@@ -49,9 +49,13 @@
         }
     ],
     "tags": [
-        "work",
-        "lifestyle",
-        "motor",
-        "mobile"
+        {
+            "tags": [
+                "work",
+                "lifestyle",
+                "motor",
+            "mobile"
+            ]
+        }
     ]
 }

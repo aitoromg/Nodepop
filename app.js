@@ -1,15 +1,22 @@
 var createError = require('http-errors');
 var express = require('express');
+var i18n = require('i18n');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var app = express();
 
+i18n.configure({
+  locales:['en', 'es'],
+  directory: __dirname + '/locales'
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.engine('html', require('ejs').__express);
+app.use(i18n.init);
 
 // Mongoose connect & models
 require('./lib/connectMongoose');
@@ -64,5 +71,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+function isAPI(req){
+  return req.originalUrl.indexOf('/apiv') === 0;
+}
 
 module.exports = app;

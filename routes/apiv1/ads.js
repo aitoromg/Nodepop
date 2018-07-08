@@ -36,7 +36,7 @@ router.get('/', jwtAuth(), async (req, res, next) => {
         const filter = {};
 
         if (name) {
-            filter.name = name; // only add the filter when have to filter
+            filter.name = new RegExp('^' + req.query.name, "i"); // only add the filter when have to filter
         }
 
         if (sale) {
@@ -44,11 +44,24 @@ router.get('/', jwtAuth(), async (req, res, next) => {
         }
 
         if (price) {
-            filter.price = price; // only add the filter when have to filter
+            switch(price) { // only add the filter when have to filter
+                case '10-50':
+                    filter.price = { '$gte': '10', '$lte': '50' };
+                    break;
+                case '10-':
+                    filter.price = { '$gt': '10' };
+                    break;
+                case '-50':
+                    filter.price = {'$lt': '50' };
+                    break;
+                case '50':
+                    filter.price = '50';
+                    break;
+            }
         }
 
-        if (tag) {
-            filter.tag = tag; // only add the filter when have to filter
+        if (tags) {
+            filter.tags = tags; // only add the filter when have to filter
         }
 
         const ads = await Ad.list(filter, skip, limit, fields, sort);

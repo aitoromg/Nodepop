@@ -67,8 +67,8 @@ mongoClient.connect(url, { useNewUrlParser: true }, function(err, db) {
     db.collection('tags').insertMany(json.tags, function(err, results) {
         // Check error first
         if (err) {
-            //return console.log('Failed to add tags');
-            return console.log(err);
+            return console.log('Failed to add tags');
+            //return console.log(err);
         }
 
         console.log('Saved tags: ', results.ops);

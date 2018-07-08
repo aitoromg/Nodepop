@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 // define schema
 var tagSchema = mongoose.Schema({
-    tag: { type: Array }
+    tags: { type: Array }
 });
 
 // create model
