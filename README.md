@@ -8,6 +8,14 @@ This application uses MongoDB. To start MongoDB you can use:
 ```shell
 ./bin/mongod --dbpath ./data/db --directoryperdb
 ````
+## Production
+
+To start the application in production mode use:
+
+```shell
+npm run start
+````
+
 ## Cluster
 
 To start the application with cluster mode use:
@@ -101,4 +109,15 @@ Paginate results:
 ### List Tags
 
 To get tags list make a GEt to: http://localhost:3000/apiv1/tags
+
+# DevOps
+Práctica DevOps Boot 7 (2018)
+
+## URL
+
+http://ec2-54-86-24-166.compute-1.amazonaws.com/
+
+## IP
+
+http://54.86.24.166/
 
